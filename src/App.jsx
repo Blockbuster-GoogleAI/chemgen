@@ -1,21 +1,15 @@
-import { useState } from "react";
-import FileUpload from "./components/FileUpload";
-import DataDisplay from "./components/DataDisplay";
+import React, { useState } from "react";
+import FileUpload from "./components/FileUpload.jsx";
+import ClusteringResult from "./components/ClusteringResult.jsx";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [clusteringData, setClusteringData] = useState(null);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4 text-center">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-center mb-4">CSV File Uploader</h1>
-        <FileUpload setData={setData} />
-      </div>
-
-      <div className="mt-6 w-full max-w-lg bg-white shadow-md p-4 rounded-lg">
-        <h2 className="text-lg font-semibold">Processed Data:</h2>
-        <DataDisplay data={data} />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-4">
+      <h1 className="text-2xl font-bold text-center">FIND THE RIGHT PERSON TO TEST</h1>
+      <FileUpload setClusteringData={setClusteringData} />
+      {clusteringData && <ClusteringResult data={clusteringData} />}
     </div>
   );
 }
